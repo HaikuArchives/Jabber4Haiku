@@ -17,7 +17,7 @@
 #endif
 
 #ifndef _DESKBAR_H
-	#include <be_apps/Deskbar/Deskbar.h>
+	#include <Deskbar.h>
 #endif
 
 #ifndef _NETPOSITIVE_H
