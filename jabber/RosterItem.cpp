@@ -103,14 +103,14 @@ void RosterItem::DrawItem(BView *owner, BRect frame, bool complete) {
 	if (IsSelected()) {
 		if (status == UserID::ONLINE) {
 			if (exact_status == "xa" || exact_status == "away" || exact_status == "dnd") {
-				owner->SetHighColor(200, 255, 200, 255);
+				owner->SetHighColor(213, 158, 158, 255);
 			} else {
-				owner->SetHighColor(200, 255, 200, 255);
+				owner->SetHighColor(158, 213, 158, 255);
 			}
 		} else if (status == UserID::OFFLINE) {
-			owner->SetHighColor(255, 200, 200, 255);
+			owner->SetHighColor(213, 213, 213, 255);
 		} else {
-			owner->SetHighColor(200, 200, 255, 255);
+			owner->SetHighColor(247, 189, 125, 255);
 		}
 	} else {
 		owner->SetHighColor(owner->ViewColor());
@@ -160,7 +160,7 @@ void RosterItem::DrawItem(BView *owner, BRect frame, bool complete) {
 	// font color is based on online status
 	if (status == UserID::ONLINE) {
 		if (exact_status == "xa" || exact_status == "away" || exact_status == "dnd") {
-			owner->SetHighColor(0, 110, 0, 255);
+			owner->SetHighColor(255, 0, 0, 255);
 			owner->GetFont(&statusFont);
 			statusFont.SetFace(B_ITALIC_FACE);
 			owner->SetFont(&statusFont);
@@ -168,9 +168,9 @@ void RosterItem::DrawItem(BView *owner, BRect frame, bool complete) {
 			owner->SetHighColor(0, 180, 0, 255);
 		}
 	} else if (status == UserID::OFFLINE) {
-		owner->SetHighColor(255, 0, 0, 255); //red
+		owner->SetHighColor(120, 120, 120, 255); //gray
 	} else {
-		owner->SetHighColor(0, 0, 255, 255); //blue
+		owner->SetHighColor(207, 116, 14, 255); //orange
 	}
 
 	// construct text positioning
