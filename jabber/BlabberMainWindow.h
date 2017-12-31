@@ -64,7 +64,7 @@ public:
 	bool                       ValidateLogin();
 	void                       ShowLogin();
 	void                       SetCustomStatus(std::string status);
-	
+	BApplication* AppPtr;
 protected:
 	                           BlabberMainWindow(BRect frame);
 		                           
