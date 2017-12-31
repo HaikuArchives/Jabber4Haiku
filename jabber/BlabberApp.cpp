@@ -47,7 +47,7 @@ BlabberApp::BlabberApp()
 
 	// display opening window
 	BlabberMainWindow::Instance()->Show();
-
+	BlabberMainWindow::Instance()->AppPtr = this;
 	// start up the network queue
 	JabberSpeak::Instance()->Run();
 
@@ -67,4 +67,5 @@ BlabberApp::~BlabberApp() {
 	// clean up the settings module
 	delete BlabberSettings::Instance();
 	
+
 }
