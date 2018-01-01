@@ -172,24 +172,20 @@ void ChatTextView::MouseDown(BPoint pt)
 	// no more looking at spaces
 	DetectUrl(url, curr_offset, text, pt);
 	//check menu selected item
-	if(buttons & B_PRIMARY_MOUSE_BUTTON && right_button_click == false)
+	if(buttons & B_PRIMARY_MOUSE_BUTTON)
 	{
 		if(!url.empty())
 		{
-			right_button_click = true;
-			//
 			BPoint screen_point(pt);	
 			ConvertToScreen(&screen_point);	
-			selected = _link_menu->Go(screen_point);	
-		}
-	}
-	if(right_button_click == true)
-	{
-		//open link
+			selected = _link_menu->Go(screen_point);
+			
+			//open link
 		if(selected == _open_link)
 		{
 				// load up browser!!
-			if (!url.empty()) {
+			if (!url.empty()) 
+			{
 				char *argv[] = {const_cast<char *>(url.c_str()), NULL};
 				if (!be_roster->IsRunning("text/html"))
 				{
@@ -204,18 +200,18 @@ void ChatTextView::MouseDown(BPoint pt)
 			}
 		}
 		//copy to clipboard
-		if(selected == _copy_to_cb)
-		{
-			be_clipboard->Lock();
-			if(be_clipboard->Lock()) 
+			if(selected == _copy_to_cb)
 			{
-				be_clipboard->Clear();
-				BMessage* clip = be_clipboard->Data();	
-				clip->AddData("text/plain", B_MIME_TYPE, url.c_str(), strlen(url.c_str()));
-				be_clipboard->Commit();
-				be_clipboard->Unlock();
-			}
+				be_clipboard->Lock();
+				if(be_clipboard->Lock()) 
+				{
+					be_clipboard->Clear();
+					BMessage* clip = be_clipboard->Data();	
+					clip->AddData("text/plain", B_MIME_TYPE, url.c_str(), strlen(url.c_str()));
+					be_clipboard->Commit();
+					be_clipboard->Unlock();
+				}
+			}	
 		}
-		right_button_click = false;
 	}
 }

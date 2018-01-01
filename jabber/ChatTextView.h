@@ -47,7 +47,6 @@ public:
 	void MouseMoved(BPoint pt, uint32 code, const BMessage* dragMessage);
 	void MouseDown(BPoint pt);
 private:
-	bool right_button_click;
 	BPopUpMenu       *_link_menu;
 	BMenuItem		  *_open_link;
 	BMenuItem         *_copy_to_cb; 
