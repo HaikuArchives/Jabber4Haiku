@@ -171,15 +171,34 @@ void ChatTextView::MouseDown(BPoint pt)
 
 	// no more looking at spaces
 	DetectUrl(url, curr_offset, text, pt);
-	//check menu selected item
+	//Open link, without pop-up menu
 	if(buttons & B_PRIMARY_MOUSE_BUTTON)
+	{
+	 	if(!url.empty())
+	 	{
+	 		char *argv[] = {const_cast<char *>(url.c_str()), NULL};
+			if (!be_roster->IsRunning("text/html"))
+			{
+				be_roster->Launch("text/html", 1, argv);
+			}
+			else 
+			{
+				BMessenger messenger("text/html");
+				BMessage msg(B_NETPOSITIVE_OPEN_URL);
+				msg.AddString("be:url", url.c_str());
+				messenger.SendMessage(&msg);
+			}
+	 	}
+	}
+	//check menu selected item
+	if(buttons & B_SECONDARY_MOUSE_BUTTON)
 	{
 		if(!url.empty())
 		{
 			BPoint screen_point(pt);	
 			ConvertToScreen(&screen_point);	
+			screen_point.x+=150;
 			selected = _link_menu->Go(screen_point);
-			
 			//open link
 		if(selected == _open_link)
 		{
