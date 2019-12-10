@@ -32,10 +32,11 @@ const std::string& Media::filterString() const
 
 gloox::Tag* Media::tag() const
 {
-	gloox::Tag* t = new gloox::Tag("media", "type", fType);
+	gloox::Tag* t = new gloox::Tag("media");
 	t->setXmlns(XMLNS_MEDIA);
 	gloox::Tag* uri = new gloox::Tag("uri");
 	uri->setCData(fURI);
+        uri->addAttribute("type", fType);
 	t->addChild(uri);
 	return t;
 }
