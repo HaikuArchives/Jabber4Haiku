@@ -79,7 +79,7 @@ if(NOT gloox)
 endif()
 
 find_library(expat expat)
-if(NOT gloox)
+if(NOT expat)
 	message(FATAL_ERROR "expat not found, try pkgman install devel:libexpat_x86")
 endif()
 
