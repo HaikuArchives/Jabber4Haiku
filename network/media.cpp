@@ -36,7 +36,7 @@ gloox::Tag* Media::tag() const
 	t->setXmlns(XMLNS_MEDIA);
 	gloox::Tag* uri = new gloox::Tag("uri");
 	uri->setCData(fURI);
-        uri->addAttribute("type", fType);
+	uri->addAttribute("type", fType);
 	t->addChild(uri);
 	return t;
 }
